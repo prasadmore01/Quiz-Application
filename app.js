@@ -12,6 +12,7 @@ quiz.onload = function(){
     if(quiz.status==200){
         let response = this.responseText;
         let quizArr = JSON.parse(response)
+        console.log(quizArr)
         let arrLen = quizArr.results
         
         
@@ -48,9 +49,8 @@ function display(){
 
     console.log(choices)
 
-    //-----------------------------------------------------------------------Ended MCQ Options array 
 
-
+    //--------------------------------------------------------- Displayed Questions and Options on screen
 
     for(let i=0;i<10;i++){
 
@@ -59,7 +59,7 @@ function display(){
 
         for(let j=0;j<4;j++){
             let radios = document.createElement("div")
-            radios.innerHTML="<input type='radio' name='"+i+"'>"+choices[i][j]
+            radios.innerHTML="<input type='radio' name='mcq'>"+choices[i][j]
             question.appendChild(radios)
         }
         
@@ -67,6 +67,9 @@ function display(){
 
     }
 
+    //--------------------------------------------------------- Implemented the Logic of On checked of option it should give us the answer is right or wrong
+
+    
     let mcqOptions = document.querySelectorAll('input[type=radio]')
     
     for(let i=0;i<(4*10);i++){
@@ -81,6 +84,7 @@ function display(){
             for(j=0;j<10;j++){
                 if(mcqOptions[i].checked){
                     let selectedValue = mcqOptions[i].parentNode.firstChild.nextSibling.nodeValue;
+                   
                     if(selectedValue == quizArray[j].correct_answer){
                         console.log("Answer is Correct")
                     }
