@@ -30,36 +30,66 @@ function display(){
 
     console.log(quizArray)
     let choices = []
-    // let options = []
-
-    // for(let i=0;i<4;i++){
-
     
-    //     options.push(quizArray[i].incorrect_answers)
-    //     options.push(quizArray[i].correct_answer)
-    // }
+    //-----------------------------------------------------------------------Created MCQ Options array 
 
-    // console.log(options)
-    // choices.push(quizArray[j].inccorrect_answers[j])
-    for(let j=0;j<4;i++){
-        
+    for(let i=0;i<10;i++){
+        for(let j=0;j<1;j++){
+            mcqArr = quizArray[i].incorrect_answers
+
+            let choice = quizArray[i].incorrect_answers[j]
+            choices.push(mcqArr)
+        }
     }
+   
+    for(let i=0;i<10;i++){
+        choices[i].push(quizArray[i].correct_answer)
+    }
+
+    console.log(choices)
+
+    //-----------------------------------------------------------------------Ended MCQ Options array 
+
 
 
     for(let i=0;i<10;i++){
 
         let question = document.createElement("h3")
-        question.textContent = quizArray[i].question;
+        question.textContent = (i+1)+"] "+quizArray[i].question;
 
-        let radios = document.createElement("div")
-        radios.innerHTML="<input type='radio' value='mcq'>"+quizArray[i].cor
         for(let j=0;j<4;j++){
-            div.innerHTML="<input type='radio' value='mcq'>"+quizArray[i].question
+            let radios = document.createElement("div")
+            radios.innerHTML="<input type='radio' name='"+i+"'>"+choices[i][j]
+            question.appendChild(radios)
         }
-
+        
         div.appendChild(question)
 
     }
+
+    let mcqOptions = document.querySelectorAll('input[type=radio]')
+    
+    for(let i=0;i<(4*10);i++){
+        mcqOptions[i].addEventListener("click",funCheck,false)
+    }
+    
+    function funCheck(event){
+
+
+        for(let i=0;i<(4*10);i++){
+            
+            for(j=0;j<10;j++){
+                if(mcqOptions[i].checked){
+                    let selectedValue = mcqOptions[i].parentNode.firstChild.nextSibling.nodeValue;
+                    if(selectedValue == quizArray[j].correct_answer){
+                        console.log("Answer is Correct")
+                    }
+                }   
+            }
+        }
+
+    }
+
 
 }
 
