@@ -18,7 +18,9 @@
 .container h1{
     text-align: center;
     font-size: 40px;
-    color: blueviolet;
+    color: rgb(200, 141, 255);
+
+    padding: 5px;
 }
 
 .container .box{
@@ -27,6 +29,7 @@
     background-color: rgb(20, 20, 51);
     box-shadow: rgba(236, 236, 236, 0.25) 0px 54px 55px, rgba(238, 238, 238, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(236, 236, 236, 0.17) 0px 12px 13px, rgba(236, 236, 236, 0.09) 0px -3px 5px;
     padding: 50px 20px;
+    border-radius: 20px;
 }
 
 .box h2,h4{
@@ -48,10 +51,16 @@
     height: 30px;
     padding: 10px 20px;
     border-radius: 20px;
-    margin: 10px 5px;
+    margin: 20px 5px;
     border: none;
     outline: none;
     font-size: 17px;
+    box-shadow: rgba(120, 46, 240, 0.4) 5px 5px, rgba(56, 86, 255, 0.3) 10px 10px, rgba(130, 46, 240, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    transition-duration: 1s;
+}
+
+.box input:hover{
+    box-shadow: none;
 }
 
 .box button{
@@ -63,5 +72,13 @@
     background-color: blueviolet;
     border-radius: 100px;
     border: none;
-    margin-top: 10px;
+    margin-top: 20px;
+    transition-duration: 1s;
+    box-shadow: rgba(120, 46, 240, 0.4) 5px 5px, rgba(56, 86, 255, 0.3) 10px 10px, rgba(130, 46, 240, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    transition-duration: 1s;
+}
+
+.box button:hover{
+    cursor: pointer;
+    box-shadow: none
 }
