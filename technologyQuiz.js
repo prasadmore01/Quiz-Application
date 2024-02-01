@@ -1,6 +1,7 @@
 let div = document.getElementById("container")
 let quizArray = []
-
+let count = 0
+let submitQuiz = document.getElementById("submitQuiz")
 
 let quiz = new XMLHttpRequest()
 
@@ -25,12 +26,12 @@ quiz.onload = function(){
     }
 }
 
-
+let choices = []
 
 function display(){
 
     console.log(quizArray)
-    let choices = []
+    
     
     //-----------------------------------------------------------------------Created MCQ Options array 
 
@@ -89,13 +90,27 @@ function display(){
                    
                     if(selectedValue == quizArray[j].correct_answer){
                         console.log("Answer is Correct")
+                        count++;
+                    
                     }
                 }   
             }
         }
 
     }
-
+ 
 
 }
 
+
+ //--------------------------------------------------------- After Submit Quiz
+
+ submitQuiz.addEventListener("click",funSubmit,false)
+
+ function funSubmit(){
+    window.alert(count + " Answers are Correct out of 10 & you got "+count*10+"% out of 100")
+    // let correctAnswer = quizArray.
+
+ }
+
+console.log(quizArray[0].correct_answer)
