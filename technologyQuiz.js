@@ -2,6 +2,8 @@ let div = document.getElementById("container")
 let quizArray = []
 let count = 0
 let submitQuiz = document.getElementById("submitQuiz")
+let correctAns = []
+
 
 let quiz = new XMLHttpRequest()
 
@@ -32,7 +34,12 @@ function display(){
 
     console.log(quizArray)
     
-    
+    for(let i=0;i<10;i++){
+        let cans = quizArray[i].correct_answer
+        correctAns.push(cans)
+    }
+    console.log(quizArray[0].correct_answer)
+    console.log(correctAns)
     //-----------------------------------------------------------------------Created MCQ Options array 
 
     for(let i=0;i<10;i++){
@@ -85,21 +92,24 @@ function display(){
         for(let i=0;i<(4*10);i++){
             
             for(j=0;j<10;j++){
+                
                 if(mcqOptions[i].checked){
                     let selectedValue = mcqOptions[i].parentNode.firstChild.nextSibling.nodeValue;
-                   
+                    
                     if(selectedValue == quizArray[j].correct_answer){
                         console.log("Answer is Correct")
                         count++;
-                    
                     }
-                }   
+                    
+                   
+                }  
+                
             }
         }
 
     }
  
-
+    correctAnswers()
 }
 
 
@@ -110,7 +120,24 @@ function display(){
  function funSubmit(){
     window.alert(count + " Answers are Correct out of 10 & you got "+count*10+"% out of 100")
     // let correctAnswer = quizArray.
-
+    correctAnswers()
  }
 
-console.log(quizArray[0].correct_answer)
+ function correctAnswers(){
+  
+    let h3values = document.querySelectorAll('input[type=radio]')
+    let corAns;
+    for(let i=0;i<40;i++){
+        
+        let mcqOptions = h3values[i].parentNode.firstChild.nextSibling.nodeValue
+        
+        for(let j=0;j<10;j++){
+    
+            if(mcqOptions==correctAns[j]){ 
+            
+              console.log("true")
+        }
+    }
+    }
+    
+}
