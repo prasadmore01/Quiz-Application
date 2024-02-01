@@ -1,6 +1,6 @@
 let startQuiz = document.getElementById("start-quiz")
 startQuiz.addEventListener("click",start,false)
-
+console.log("heelo")
 let userName = document.getElementById("name")
 let userEmail = document.getElementById("email")
 // let quizSelect = document.getElementById("quiz-select")
@@ -31,7 +31,7 @@ function start(){
     }
 
    
-    if(quizSelect == "Technology"){
+    if(quizSelect == "Technology" && userName.value != "" && userEmail.value != ""){
         location.assign("technologyQuiz.html")
     } 
 
