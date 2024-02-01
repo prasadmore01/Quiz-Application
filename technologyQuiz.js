@@ -56,11 +56,13 @@ function display(){
 
         let question = document.createElement("h3")
         question.textContent = (i+1)+"] "+quizArray[i].question;
-
+        let mcqBox = document.createElement("div")
+        mcqBox.classList.add("mcqBox")
         for(let j=0;j<4;j++){
             let radios = document.createElement("div")
             radios.innerHTML="<input type='radio' name='mcq'>"+choices[i][j]
-            question.appendChild(radios)
+            question.appendChild(mcqBox)
+            mcqBox.appendChild(radios)
         }
         
         div.appendChild(question)
