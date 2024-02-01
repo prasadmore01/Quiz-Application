@@ -3,6 +3,7 @@ let quizArray = []
 let count = 0
 let submitQuiz = document.getElementById("submitQuiz")
 let correctAns = []
+let submitCount = 0;
 
 
 let quiz = new XMLHttpRequest()
@@ -68,7 +69,7 @@ function display(){
         mcqBox.classList.add("mcqBox")
         for(let j=0;j<4;j++){
             let radios = document.createElement("div")
-            radios.innerHTML="<input type='radio' name='mcq'>"+choices[i][j]
+            radios.innerHTML="<input type='radio' name='"+j+"'>"+choices[i][j]
             question.appendChild(mcqBox)
             mcqBox.appendChild(radios)
         }
@@ -120,24 +121,47 @@ function display(){
  function funSubmit(){
     window.alert(count + " Answers are Correct out of 10 & you got "+count*10+"% out of 100")
     // let correctAnswer = quizArray.
+    submitCount++;
     correctAnswers()
+    
  }
 
+
  function correctAnswers(){
-  
-    let h3values = document.querySelectorAll('input[type=radio]')
+    console.log("SUBMIT COUNT "+submitCount)
+    if(submitCount==1){
+    let h3values = document.querySelectorAll('div.mcqBox')
+
     let corAns;
-    for(let i=0;i<40;i++){
-        
-        let mcqOptions = h3values[i].parentNode.firstChild.nextSibling.nodeValue
-        
-        for(let j=0;j<10;j++){
+    let mcqOptions = 
+    console.log(h3values[0].firstElementChild.firstChild.nextSibling)
+    console.log(h3values[0].childNodes[2].childNodes[1].nodeValue)
     
-            if(mcqOptions==correctAns[j]){ 
-            
-              console.log("true")
+    console.log(h3values)    
+    
+    for(let i=0;i<10;i++){
+        for(let j=0;j<4;j++){
+            let mcqOptions = h3values[i].childNodes[j].childNodes[1].nodeValue
+            if(mcqOptions==correctAns[i]){ 
+                         h3values[i].children[j].style.backgroundColor="green"
+                          console.log("true")
+                    }
         }
     }
+    
     }
+    
+    // for(let i=0;i<40;i++){
+        
+    //     let mcqOptions = h3values[i].parentNode.firstChild.nextSibling.nodeValue
+        
+    //     for(let j=0;j<10;j++){
+    
+    //         if(mcqOptions==correctAns[j]){ 
+            
+    //           console.log("true")
+    //     }
+    // }
+    // }
     
 }
