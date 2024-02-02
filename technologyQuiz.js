@@ -88,7 +88,7 @@ function display(){
     }
     
     function funCheck(event){
-        console.log(event)
+      
 
         for(let i=0;i<(4*10);i++){
      
@@ -98,8 +98,8 @@ function display(){
                     let selectedValue = mcqOptions[i].parentNode.firstChild.nextSibling.nodeValue;
                     
                     if(selectedValue == quizArray[j].correct_answer){
-                        console.log("Answer is Correct")
-                        count++;
+                        // console.log("Answer is Correct")
+                        
                         // console.log(count)
                     }
                     
@@ -110,36 +110,69 @@ function display(){
         }
 
     }
- 
+
+    
     correctAnswers()
 }
 
 
  //--------------------------------------------------------- After Submit Quiz
 
+
  submitQuiz.addEventListener("click",funSubmit,false)
 
     function funSubmit(){
+    correctAnswers()
+    
+    setTimeout(()=>{
+        window.alert(count + " Answers are Correct out of 10 & you got "+count*10+"% out of 100")
 
-         window.alert(count + " Answers are Correct out of 10 & you got "+count*10+"% out of 100")
+    },400)
     
                 //  let correctAnswer = quizArray.
+                
+                
     submitCount++;
-    correctAnswers()
+   
+  
+    
     
  }
 
 
+
  function correctAnswers(){
-    console.log("SUBMIT COUNT "+submitCount)
-    if(submitCount==1){
+
+    // if(submitCount==1){
     let h3values = document.querySelectorAll('div.mcqBox')
 
     let corAns;
-    let mcqOptions = 
-
     
-    console.log(h3values)    
+    setTimeout(()=>{
+        let mcqOptions = document.querySelectorAll('input[type=radio]')
+
+        for(let i=0;i<(4*10);i++){
+     
+            for(j=0;j<10;j++){
+                
+                if(mcqOptions[i].checked){
+                    let selectedValue = mcqOptions[i].parentNode.firstChild.nextSibling.nodeValue;
+                    
+                    if(selectedValue == quizArray[j].correct_answer){
+                        console.log("Answer is Correct")
+                        count++
+                        console.log("Set timeout Count"+count)
+                    }
+                    
+                   
+                }  
+                
+            }
+        }
+      
+    },300)
+
+
     
     for(let i=0;i<10;i++){
         for(let j=0;j<4;j++){
@@ -147,23 +180,12 @@ function display(){
             if(mcqOptions==correctAns[i]){ 
                          h3values[i].children[j].style.backgroundColor="green"
                           console.log("true")
+                          
                     }
         }
     }
     
     }
     
-    // for(let i=0;i<40;i++){
-        
-    //     let mcqOptions = h3values[i].parentNode.firstChild.nextSibling.nodeValue
-        
-    //     for(let j=0;j<10;j++){
+ 
     
-    //         if(mcqOptions==correctAns[j]){ 
-            
-    //           console.log("true")
-    //     }
-    // }
-    // }
-    
-}
