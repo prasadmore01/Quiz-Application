@@ -77,40 +77,6 @@ function display(){
         div.appendChild(question)
 
     }
-
-    //--------------------------------------------------------- Implemented the Logic of On checked of option it should give us the answer is right or wrong
-
-    
-    let mcqOptions = document.querySelectorAll('input[type=radio]')
-    
-    for(let i=0;i<(4*10);i++){
-        mcqOptions[i].addEventListener("click",funCheck,false)
-    }
-    
-    function funCheck(event){
-      
-
-        for(let i=0;i<(4*10);i++){
-     
-            for(j=0;j<10;j++){
-                
-                if(mcqOptions[i].checked){
-                    let selectedValue = mcqOptions[i].parentNode.firstChild.nextSibling.nodeValue;
-                    
-                    if(selectedValue == quizArray[j].correct_answer){
-                        // console.log("Answer is Correct")
-                        
-                        // console.log(count)
-                    }
-                    
-                   
-                }  
-                
-            }
-        }
-
-    }
-
     
     correctAnswers()
 }
@@ -147,6 +113,8 @@ function display(){
     let h3values = document.querySelectorAll('div.mcqBox')
 
     let corAns;
+    
+    //-------Implemented the Logic of On checked of option it should give us the answer is right or wrong
     
     setTimeout(()=>{
         let mcqOptions = document.querySelectorAll('input[type=radio]')
