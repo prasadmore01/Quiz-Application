@@ -64,7 +64,7 @@ function display(){
     for(let i=0;i<10;i++){
 
         let question = document.createElement("h3")
-        question.textContent = (i+1)+"] "+quizArray[i].question;
+        question.textContent = i+"] "+quizArray[i].question;
         let mcqBox = document.createElement("div")
         mcqBox.classList.add("mcqBox")
         for(let j=0;j<4;j++){
@@ -91,7 +91,7 @@ function display(){
         console.log(event)
 
         for(let i=0;i<(4*10);i++){
-            event.srcElement.name=i
+     
             for(j=0;j<10;j++){
                 
                 if(mcqOptions[i].checked){
@@ -100,6 +100,7 @@ function display(){
                     if(selectedValue == quizArray[j].correct_answer){
                         console.log("Answer is Correct")
                         count++;
+                        // console.log(count)
                     }
                     
                    
