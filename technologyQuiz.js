@@ -78,7 +78,7 @@ function display(){
 
     }
     
-    correctAnswers()
+    // correctAnswers()
 }
 
 
@@ -140,11 +140,10 @@ function display(){
       
     },300)
 
-
-    
     for(let i=0;i<10;i++){
         for(let j=0;j<4;j++){
             let mcqOptions = h3values[i].childNodes[j].childNodes[1].nodeValue
+            console.log(mcqOptions)
             if(mcqOptions==correctAns[i]){ 
                          h3values[i].children[j].style.backgroundColor="green"
                           console.log("true")
